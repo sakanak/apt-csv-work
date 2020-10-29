@@ -159,7 +159,7 @@ def coreAnalyze():
     statdf = pandas.DataFrame({"Elements": colarray, "Sum": sumarray, "Avg at%": meanarray, "St Dev": stdevarray})
     statname = input("What do you want to name your core statistics file? Include .csv: ")
     statdf.to_csv(statname)
-    pandas.read_csv(statname, header = None).T.to_csv(statname, header = False, index = True)
+    #Transpose Core Stats: pandas.read_csv(statname, header = None).T.to_csv(statname, header = False, index = True)
 
 process()
 coreAnalyze()
