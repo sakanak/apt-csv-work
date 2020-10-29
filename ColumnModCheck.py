@@ -1,6 +1,6 @@
 # For VK's device
-#filepath = '/Users/vishal/Documents/MATLAB/python_scripts/steelrntest.csv'
-#newpath = '/Users/vishal/Documents/MATLAB/python_scripts/steelmod.csv'
+# filepath = 'steelrntest.csv'
+# newpath = 'steelmod.csv'
 import pandas
 import matplotlib.pyplot as plt
 
@@ -13,4 +13,3 @@ df = pandas.read_csv(filepath)
 print(df[colname])
 df = pandas.read_csv(newpath)
 print(df[colname])
-#####################
