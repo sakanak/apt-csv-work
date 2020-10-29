@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 # filepath is the original CSV file
 # modpath, the intermediate, does not need to be created manually, the program will do it
 # newpath, the final CSV, also does not need to be created manually, the program will do it
-#filepath = "/Users/vishal/Documents/MATLAB/python_scripts/steelrntest.csv"
-#modpath = "/Users/vishal/Documents/MATLAB/python_scripts/steelmod.csv"
-#newpath = "/Users/vishal/Documents/MATLAB/python_scripts/steelgraph.csv"
+# filepath = "steelrntest.csv"
+# modpath = "steelmod.csv"
+# newpath = "steelgraph.csv"
 
 # Peak Decomposition %s
 
@@ -66,7 +66,7 @@ def process():
         del df[i]
 
 
-    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=2)
+    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=1)
     del(df["Unnamed: 0"])
 
     df.to_csv(newpath)
@@ -119,11 +119,18 @@ def coreAnalyze():
     # for VK's data, core # = 85
 
     df = pandas.read_csv(modpath)
-    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=2)
+    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=1)
     del(df["Unnamed: 0"])
     df.to_csv(modpath)
-    x = int(input("From looking at the graph and your intermediate CSV file, at what row can the core be marked off? Give row index according to CSV file (for the first row, enter 0): "))
-    core_df = df[x:]
+
+    x = float(input("From looking at the graph and your intermediate CSV file, at what distance (nm) can the core be marked off?: "))
+
+    for i in range(1, len(df["Distance (nm)"]-1)):
+        if df["Distance (nm)"].loc[i] == x:
+            idx = i
+
+
+    core_df = df[idx:]
 
 
     meanarray = []
@@ -135,16 +142,24 @@ def coreAnalyze():
     
     df = pandas.read_csv(newpath)
 
-    percentcore_df = df[x:]
+    percentcore_df = df[idx:]
     for i in colarray:
         meanarray.append(percentcore_df[i].mean())
         stdevarray.append(percentcore_df[i].std())
     
+    print("Compounds:")
     print(colarray)
+    print("Sum:")
     print(sumarray)
+    print("Average %:")
     print(meanarray)
+    print("Standard Deviation:")
     print(stdevarray)
 
+    statdf = pandas.DataFrame({"Elements": colarray, "Sum": sumarray, "Avg at%": meanarray, "St Dev": stdevarray})
+    statname = input("What do you want to name your core statistics file? Include .csv: ")
+    statdf.to_csv(statname)
+    pandas.read_csv(statname, header = None).T.to_csv(statname, header = False, index = True)
 
 process()
 coreAnalyze()
