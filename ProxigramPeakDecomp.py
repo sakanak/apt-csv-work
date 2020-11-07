@@ -25,28 +25,29 @@ newpath = input("Input filepath where you would like the new final cropped proxi
 
 def process():
     df = pandas.read_csv(filepath)
+    peakex = input("Y/N. Do you have an unknown peak in your CSV?: ")
+    if(peakex == "Y"):
+        peakEN = input('How many possible elements in your peak? ')
+        namearr = [] # collects element names to search for in CSV
+        multarr = [] # connects elements to percentage composition
+        peakName = input("What is the name of the unknown peak column? ")
+        for i in range(0, int(peakEN)):
+            namearr.append(input('What is element number '+str(i+1)+' in the peak? Use element symbol (Ex. Fe): '))
+            multarr.append(0.01*float(input(str(namearr[i])+ " makes up what percent of the peak? ")))
 
-    peakEN = input('How many possible elements in your peak? ')
-    namearr = [] # collects element names to search for in CSV
-    multarr = [] # connects elements to percentage composition
-    peakName = input("What is the name of the unknown peak column? ")
-    for i in range(0, int(peakEN)):
-        namearr.append(input('What is element number '+str(i+1)+' in the peak? Use element symbol (Ex. Fe): '))
-        multarr.append(0.01*float(input(str(namearr[i])+ " makes up what percent of the peak? ")))
+        print(namearr)
+        print(multarr)
+        print(peakName)
 
-    print(namearr)
-    print(multarr)
-    print(peakName)
+        headarr = []
+        for i in namearr:
+            headarr.append(i + ' %') # CSV file headers are in the form "Al %", need to add % for parsing
 
-    headarr = []
-    for i in namearr:
-        headarr.append(i + ' %') # CSV file headers are in the form "Al %", need to add % for parsing
+        print(headarr)
+        for i in range(0, len(headarr)-1):
+            df[headarr[i]] = (df[peakName]*multarr[i])+df[headarr[i]] # replaces element % column with distribution added
 
-    print(headarr)
-    for i in range(0, len(headarr)-1):
-        df[headarr[i]] = (df['Rn % (27Da)']*multarr[i])+df[headarr[i]] # replaces element % column with distribution added
-
-    del df['Rn % (27Da)']
+        del df[peakName]
     df.to_csv(modpath) # writes to intermediate file
 
     ################ creation of final "graph" CSV used to generate scatterplot
@@ -55,7 +56,7 @@ def process():
     colnumdisc = input("How many columns of data would you like to discard for analysis? These include columns with no data, or those such as 'Ga %' which are remnants of processes like FIB milling: ") 
     trasharr = []
     for i in range (0, int(colnumdisc)):
-        trasharr.append(input("What is the header of the column you would like to discard? Include % (Ex. 'Ga %'): "))
+        trasharr.append(input("Which elements/compounds would you like to discard? Use element symbol (Ex. 'Ga'): ") + " %")
 
     print(trasharr)
 
@@ -66,7 +67,7 @@ def process():
         del df[i]
 
 
-    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=1)
+    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=2)
     del(df["Unnamed: 0"])
 
     df.to_csv(newpath)
@@ -119,18 +120,22 @@ def coreAnalyze():
     # for VK's data, core # = 85
 
     df = pandas.read_csv(modpath)
-    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=1)
+    df["Distance (nm)"] = df["Distance (nm)"].round(decimals=2)
     del(df["Unnamed: 0"])
     df.to_csv(modpath)
 
     x = float(input("From looking at the graph and your intermediate CSV file, at what distance (nm) can the core be marked off?: "))
+    y = float(input("Where (nm) does your core end?: "))
 
-    for i in range(1, len(df["Distance (nm)"]-1)):
+    for i in range(0, len(df["Distance (nm)"]-1)):
         if df["Distance (nm)"].loc[i] == x:
             idx = i
 
+        if df["Distance (nm)"].loc[i] == y:
+            idy = i
 
-    core_df = df[idx:]
+
+    core_df = df[idx:(idy+1)]
 
 
     meanarray = []
