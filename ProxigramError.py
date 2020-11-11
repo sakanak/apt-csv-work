@@ -5,8 +5,9 @@ import numpy
 # Use intermediate CSV file generated in ProxigramPeakDecom.py
 
 # On VK's system
-# modpath = "steel2mod.csv"
-# newpath = "steel2graph.csv"
+#modpath = "steel2mod.csv"
+#newpath = "steel2graph.csv"
+# isotopes to delete: Cr %,C2 %,C3 %,NiH %,P %,Si %,MoC %,H %
 
 modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
 newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
@@ -17,6 +18,13 @@ dffin = pandas.read_csv(newpath)
 # print(dfmid.columns.get_loc("Distance (nm)")) # ----> col index
 
 # print(dfmid.columns[1]) # index ----> col name
+
+def rounding(x):
+    if(x == 0):
+        return 0
+    else:
+        return round(x, -int(numpy.floor(numpy.log10(numpy.abs(x)))))
+
 
 idx = 2
 if(idx < len(dffin.columns)):
@@ -36,6 +44,80 @@ dffin.insert (len(dffin.columns), "Error Sum", sum)
 
 del(dffin["Unnamed: 0"])
 
-dffin.to_csv(input("What file would you like your error data to be written to? Include .csv extension: "))
+dffin.to_csv(input("What file would you like your error data to be written to? Include .csv extension: ")) 
+
+# print(dfmid.columns.get_loc("Distance (nm)")) # ----> col index
+
+idx = 0
+idy = 0
+
+# print(dfmid.columns[1]) # index ----> col name
+x = float(input("From looking at the graph and your intermediate CSV file, at what distance (nm) can the core be marked off?: "))
+y = float(input("Where (nm) does your core end?: "))
+
+for i in range(0, len(dfmid["Distance (nm)"]-1)):
+    if dfmid["Distance (nm)"].loc[i] == x:
+        idx = i
+
+    if dfmid["Distance (nm)"].loc[i] == y:
+        idy = i
+
+
+core_df = dfmid[idx:(idy+1)]
+del(core_df["Unnamed: 0"])
+
+
+colarray = []
+
+for i in dfmid.columns:
+    colarray.append(i)
+    
+colarray.remove("Sample Count")
+colarray.remove("Distance (nm)")
+
+colarray.remove("Unnamed: 0")
+
+csstring = input("Input a comma separated list of the headers of columns you would like to delete, no spaces (Ex. Ga %,H %): ")
+cslist = csstring.split(",")
+
+for i in cslist:
+    colarray.remove(i)
+
+sumarray = []
+proparray = []
+errorarray = []
+
+for i in colarray:
+    sumarray.append(core_df[i].sum())
+
+sum = 0
+for i in sumarray:
+    sum = sum + i
+
+for i in sumarray:
+    proparray.append((i*100/sum))
+
+for i in range(0, len(proparray)):
+    proparray[i] = float('%.2g' % proparray[i]) 
+
+for i in proparray:
+    errorarray.append(rounding(numpy.sqrt(i*(100-i)/sum)))
+
+
+data = [colarray, sumarray, proparray, errorarray]
+
+isotopeList = ""
+
+newarr = []
+
+for i in errorarray:
+    if (str(i)[0] == "0" and i != 0):
+        newarr.append(str(i)[2])
+    else:
+        newarr.append(str(i)[0])
+
+for i in range(0, len(colarray)):
+    print(str(colarray[i]) + " " + str(proparray[i])+"("+str(newarr[i])+")", end = ' ')
+    
 
 
