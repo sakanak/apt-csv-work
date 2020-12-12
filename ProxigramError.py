@@ -9,7 +9,7 @@ import numpy
 #newpath = "steel2graph.csv"
 # isotopes to delete: Cr %,C2 %,C3 %,NiH %,P %,Si %,MoC %,H %
 # 1.7, 2.3, -4.9, -2.1
-
+ 
 modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
 newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
 
@@ -30,10 +30,11 @@ def rounding(x): # significant figure rounding
 idx = 2
 while(idx<len(dffin.columns)-1):
     if(dffin.columns[idx+1] != dffin.columns[idx] + "Err"):
-        print("u can put error here")
         dffin.insert(idx + 1, dffin.columns[idx] + " Err", numpy.sqrt(dffin[dffin.columns[idx]]*(100-dffin[dffin.columns[idx]])/(dfmid["Sample Count"])))
-        print("error placed")
         idx += 2
+
+print(dffin.columns[idx])
+dffin.insert(idx + 1, dffin.columns[idx] + " Err", numpy.sqrt(dffin[dffin.columns[idx]]*(100-dffin[dffin.columns[idx]])/(dfmid["Sample Count"])))
 
 sum = 0
 
