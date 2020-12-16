@@ -1,10 +1,6 @@
 import pandas
 import numpy
 
-
-# PLEASE NOTE: THIS GIBBSIAN EXCESS CALCULATION IS INCORRECT, BECAUSE IT IS MISSING
-# A TERM FOR IDEAL DENSITY. THAT WILL BE UPDATED AS SOON AS POSSIBLE.
-
 modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
 
 dfmid = pandas.read_csv(modpath)
@@ -30,9 +26,7 @@ colarray.remove("Distance (nm)")
 colarray.remove("Unnamed: 0")
 
 ##############
-
 print(colarray)
-
 ##############
 
 sumarray = []
@@ -74,12 +68,14 @@ cN = 0
 gibbsI = 0
 delL = float('%.3g' % (dfmid["Distance (nm)"][1] - dfmid["Distance (nm)"][0])) 
 area = 0
-N = 0
+
+a = float(input("What is your lattice parameter?"))
 
 for i in range(0, len(dfmid["Distance (nm)"])):
 
     n = dfmid["Sample Count"][i]
-    area = n/delL
+    rho = n/(a**3)
+    area = n/(rho*delL)
 
     cN = dfmid[head][i]/n
     gibbsI = (cN-c0)/(1-c0)/area 
