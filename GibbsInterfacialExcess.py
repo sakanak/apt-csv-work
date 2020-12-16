@@ -71,10 +71,15 @@ area = 0
 
 a = float(input("What is your lattice parameter?"))
 
+# molarmass = 58.6934
+# lp = 4
+# avo = 6.0221409e+23
+
 for i in range(0, len(dfmid["Distance (nm)"])):
 
     n = dfmid["Sample Count"][i]
-    rho = n/(a**3)
+    # rho = lp*molarmass/((a**3)*avo)
+    rho  = 4/(a**3)
     area = n/(rho*delL)
 
     cN = dfmid[head][i]/n
@@ -83,6 +88,7 @@ for i in range(0, len(dfmid["Distance (nm)"])):
 
     gibbsfinal = gibbsfinal + gibbsI
     
+print(rho)
 print("Gibbsian interfacial excess of " + head + " solute = " + str(gibbsfinal*-1) + " molecules/nm^2") # formula gives negative of excess, because cN - c0
 
 
