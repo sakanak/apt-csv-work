@@ -170,3 +170,4 @@ def entiredecomp():
     coreAnalyze()
 
     exit()
+    

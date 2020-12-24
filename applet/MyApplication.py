@@ -1,4 +1,4 @@
-import tkinter as tk
+import tkinter as tk 
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
@@ -6,6 +6,7 @@ import GibbsInterfacialExcess, PosToCSV, ProxigramError, ProxigramPeakDecomp, Pr
 
 window = tk.Tk()
 window.title("GUI")
+
 
 label = tk.Label(window, text = "Hello World!").pack()
 window.geometry('400x200')

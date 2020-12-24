@@ -2,6 +2,7 @@ import pandas
 import matplotlib.pyplot as plt
 import numpy
 
+
 # On VK's machine
 # modpath = "steel2mod.csv"
 # newpath = "steel2graph.csv"

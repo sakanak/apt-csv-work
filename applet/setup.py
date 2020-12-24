@@ -11,6 +11,7 @@ APP = ['MyApplication.py']
 DATA_FILES = ["steel2.csv", "steel2mod.csv", "steel2graph.csv", "steel2corestats.csv", "steel2error.csv"]
 OPTIONS = {}
 
+
 setup(
     app=APP,
     data_files=DATA_FILES, 

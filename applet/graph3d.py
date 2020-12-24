@@ -6,6 +6,7 @@ def plotpoints():
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
+
     n = 100
 
     df = pd.read_csv("data\steelnew\steelnewpos.csv")
