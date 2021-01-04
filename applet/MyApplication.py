@@ -5,6 +5,7 @@ import numpy as np
 import GibbsInterfacialExcess, PosToCSV, ProxigramError, ProxigramPeakDecomp, ProxigramProfilePlot, ColumnModCheck, graph3d
 
 
+#Data on VK's system: c:\Git\apt-csv-work\data\steel2\steel2.csv
 
 window = tk.Tk()
 window.title("Proxigram Modification")
