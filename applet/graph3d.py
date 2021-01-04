@@ -2,14 +2,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd 
 
-def plotpoints():
+def plotpoints(csvfrompospath):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
 
 
     n = 100
 
-    df = pd.read_csv("data\steelnew\steelnewpos.csv")
+    df = pd.read_csv(csvfrompospath)
 
     # For each set of style and range settings, plot n random points in the box
     # defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].

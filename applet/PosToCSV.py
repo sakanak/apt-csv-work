@@ -3,10 +3,10 @@ import numpy
 import struct
 
 
-def csvbuild():       
+def csvbuild(pospath):       
     arr = []
 
-    with open(input("what is the name of your POS file? Include .pos extension: "), 'rb') as f:
+    with open(pospath, 'rb') as f:
         for line in f:
             #line = f.readline()
             if(len(line)>=16):

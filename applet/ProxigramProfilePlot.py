@@ -8,10 +8,10 @@ import numpy
 # newpath = "steel2graph.csv"
 # errorpath = "steel2error.csv"
 # isotopes to delete: Cr %,C2 %,C3 %,NiH %,P %,Si %,MoC %,H %
-def proxplot():
-    modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
-    newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
-    errorpath = input("What was the filename of your error CSV? Include .csv extension: ")
+def proxplot(modpath, newpath, errorpath):
+    #modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
+    #newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
+    #errorpath = input("What was the filename of your error CSV? Include .csv extension: ")
 
     dfmid = pandas.read_csv(modpath)
     dffin = pandas.read_csv(newpath)

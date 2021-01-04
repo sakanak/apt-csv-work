@@ -10,9 +10,9 @@ import numpy
 #newpath = "steel2graph.csv"
 # isotopes to delete: Cr %,C2 %,C3 %,NiH %,P %,Si %,MoC %,H %
 # 1.7, 2.3, -4.9, -2.1
-def proxerror(): 
-    modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
-    newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
+def proxerror(modpath, newpath): 
+    #modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
+    #newpath = input("What was the filename of your final graphing CSV? Include .csv extension: ")
 
     dfmid = pandas.read_csv(modpath)
     dffin = pandas.read_csv(newpath)

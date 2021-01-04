@@ -1,8 +1,8 @@
 import pandas
 import numpy
 
-def getExcess():
-    modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
+def getExcess(modpath):
+    #modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
 
     dfmid = pandas.read_csv(modpath)
 

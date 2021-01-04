@@ -6,15 +6,6 @@ import GibbsInterfacialExcess, PosToCSV, ProxigramError, ProxigramPeakDecomp, Pr
 
 
 
-def entryfilled():
-    filepath = fileentry.get()
-    modpath = modentry.get()
-    newpath = newentry.get()
-
-    print(filepath)
-    print(modpath)
-    print(newpath)
-
 window = tk.Tk()
 window.title("Proxigram Modification")
 
@@ -34,34 +25,64 @@ label = tk.Label(window, text = "What is the filepath of the at% proxigram CSV \
 newentry = tk.Entry(window)
 newentry.pack()
 
-btentryfill = tk.Button(window, text = "What's entered", command = entryfilled).pack()
+label = tk.Label(window, text = "What is the filepath of the POS file").pack()
+posentry = tk.Entry(window)
+posentry.pack()
+
+label = tk.Label(window, text = "What is the filepath of the CSV you generated from POS file").pack()
+csvfromposentry = tk.Entry(window)
+csvfromposentry.pack()
+
+label = tk.Label(window, text = "What was the filename of your error CSV? Include .csv extension:").pack()
+errorentry = tk.Entry(window)
+errorentry.pack()
+
+filepath = "filler"
+modpath = "filler"
+newpath = "filler"
+
+def entryfilled():
+    global filepath
+    global modpath
+    global newpath
+    global pospath
+    global csvfrompospath
+    global errorpath
+    filepath = fileentry.get()
+    modpath = modentry.get()
+    newpath = newentry.get()
+    pospath = posentry.get() 
+    errorpath = errorentry.get() 
+    csvfrompospath = csvfromposentry.get() 
+    print([filepath, modpath, newpath, pospath, csvfrompospath, errorpath])
+
+btentryfill = tk.Button(window, text = "Load entered filepaths", command = entryfilled).pack()
 
 
 def gibbsclicked():
     print("clicked")
     print("this is ur modpath: " + modpath)
-
-    GibbsInterfacialExcess.getExcess()
+    GibbsInterfacialExcess.getExcess(modpath)
 
 def colmodcheckclicked():
     print("clicked")
-    ColumnModCheck.colcheck()
+    ColumnModCheck.colcheck(filepath, newpath)
     
 def postocsvclicked():
     print("clicked")
-    PosToCSV.csvbuild()
+    PosToCSV.csvbuild(pospath)
     
 def graphclicked(): 
     print("clicked")
-    graph3d.plotpoints()
+    graph3d.plotpoints(csvfrompospath)
     
 def proxplotclicked():
     print("clicked")
-    ProxigramProfilePlot.proxplot()
+    ProxigramProfilePlot.proxplot(modpath, newpath, errorpath)
     
 def proxerrorclicked():
     print("clicked")
-    ProxigramError.proxerror()
+    ProxigramError.proxerror(modpath, newpath)
 
 
 def proxpeakdecompclicked():
