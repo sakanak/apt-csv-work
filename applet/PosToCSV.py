@@ -2,6 +2,7 @@ import pandas as pd
 import numpy
 import struct
 
+#Need to update
 
 def csvbuild(pospath):       
     arr = []
