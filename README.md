@@ -1,6 +1,17 @@
 # apt-csv-work
 Analyzing/modifying CSV proxigram data
 
+Use:
+Download applet folder
+Run ManipulationInterface.py
+
+Package requirements:
+matplotlib
+numpy
+pandas
+tkinter
+
+
 ManualPeakDecomp.py requires:
     Proxigram CSV file
     Knowledge of unknown peaks (#, constituent elements w/ %s)
