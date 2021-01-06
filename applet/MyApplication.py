@@ -71,7 +71,7 @@ def colmodcheckclicked():
     
 def postocsvclicked():
     print("clicked")
-    PosToCSV.csvbuild(pospath)
+    PosToCSV.csvbuildcount(pospath)
     
 def graphclicked(): 
     print("clicked")
