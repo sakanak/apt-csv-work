@@ -19,7 +19,7 @@ def csvbuildcount(pospath):
         marker = 0
 
         line = f.readline()
-        for i in range(5000000): #(int(len(line)/16)):
+        for i in range(10000000): #(int(len(line)/16)):
             if(marker+16  <= len(line)):
                 e = struct.unpack('>'+'ffff', line[marker:marker+16]) #4*n
                 marker = marker + 16

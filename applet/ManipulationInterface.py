@@ -2,7 +2,7 @@ import tkinter as tk
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
-import GibbsInterfacialExcess, PosToCSV, ProxigramError, ProxigramPeakDecomp, ProxigramProfilePlot, ColumnModCheck, graph3d
+import GibbsInterfacialExcess, PosToCSV, ProxigramError, ProxigramPeakDecomp, ProxigramProfilePlot, ColumnModCheck, graph3d, MassSpectrum
 
 
 #Data on VK's system: c:\Git\apt-csv-work\data\steel2\steel2.csv
@@ -90,6 +90,10 @@ def proxpeakdecompclicked():
     print("clicked")
     ProxigramPeakDecomp.entiredecomp()
 
+def massspecclicked():
+    print("clicked")
+    MassSpectrum.makespec(csvfrompospath)
+
 btcolmod = tk.Button(window, text = "Column Mod Check", command = colmodcheckclicked).pack()
 btgibbs = tk.Button(window, text = "Gibbsian Interfacial Excess", command = gibbsclicked).pack()
 btgraph = tk.Button(window, text = "Graph POS CSV", command = graphclicked).pack()
@@ -97,6 +101,7 @@ btposcsv = tk.Button(window, text = "Create CSV from POS", command = postocsvcli
 btproxerror = tk.Button(window, text = "Generate Proxigram Error CSV", command = proxerrorclicked).pack()
 btproxpeakdecomp = tk.Button(window, text = "Manual Proxigram Peak Decomposition", command = proxpeakdecompclicked).pack()
 btproxprofplot = tk.Button(window, text = "Generate Proxigram Profile Plot", command = proxplotclicked).pack()
+btmassspec = tk.Button(window, text = "Generate Mass Spectrum", command = massspecclicked).pack()
 
 
 
