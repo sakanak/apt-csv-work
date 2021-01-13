@@ -14,9 +14,9 @@ def plotpoints(csvfrompospath):
     # For each set of style and range settings, plot n random points in the box
     # defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].
     for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
-        xs = df["1"]
-        ys = df["2"]
-        zs = df["3"]
+        xs = df["0"]
+        ys = df["1"]
+        zs = df["2"]
         ax.scatter(xs, ys, zs, marker=m)
 
     ax.set_xlabel('X Label')
