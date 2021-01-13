@@ -7,8 +7,8 @@ def makespec(csvfrompospath, binsize, length):
     df = pd.read_csv(csvfrompospath)
     df = df["3"]
 
-    binsize = input("What's your binsize?: ")
-    length = input("What is the max charge to mass ratio you want?: ")
+    binsize = float(input("What's your binsize?: "))
+    length = int(input("What is the max charge to mass ratio you want?: "))
     
     binN = int(length/binsize)
     marker = 0
@@ -40,9 +40,6 @@ def makespec(csvfrompospath, binsize, length):
     
     plt.show()
     #print(tally)
-     
-
-
 
 
     
