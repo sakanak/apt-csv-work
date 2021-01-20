@@ -10,6 +10,7 @@ matplotlib
 numpy
 pandas
 tkinter
+struct
 
 
 ManualPeakDecomp.py requires:
