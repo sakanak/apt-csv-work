@@ -28,7 +28,7 @@ def proxplot(modpath, newpath, errorpath):
 
     colarray.remove("Unnamed: 0")
 
-    csstring = "Cr %,C2 %,C3 %,NiH %,P %,Si %,MoC %,H %" # input("Input a comma separated list of the headers of columns you would like to delete, no spaces (Ex. Ga %,H %): ")
+    csstring = input("Input a comma separated list of the headers of columns you would like to delete, no spaces (Ex. Ga %,H %): ")
     cslist = csstring.split(",")
 
     for i in cslist:

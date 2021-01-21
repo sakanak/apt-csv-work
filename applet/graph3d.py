@@ -17,10 +17,13 @@ def plotpoints(csvfrompospath):
         xs = df["0"]
         ys = df["1"]
         zs = df["2"]
-        ax.scatter(xs, ys, zs, marker=m)
+        ax.scatter(xs, ys, zs, s=1, marker= 'o')
 
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
     ax.set_zlabel('Z Label')
 
     plt.show()
+
+
+#plotpoints("stock.csv")
