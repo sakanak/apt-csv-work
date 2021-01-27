@@ -2,7 +2,6 @@ import pandas as pd
 import numpy
 import struct
 
-#Need to update
 
 # character by character file parse, not line by line, until 16
 # have char count
@@ -19,7 +18,7 @@ def csvbuildcount(pospath):
         marker = 0
 
         line = f.readline()
-        for i in range(10000000): #(int(len(line)/16)):
+        for i in range(1000000): #(int(len(line)/16)):
             if(marker+16  <= len(line)):
                 e = struct.unpack('>'+'ffff', line[marker:marker+16]) #4*n
                 marker = marker + 16
