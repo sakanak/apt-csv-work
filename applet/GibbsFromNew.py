@@ -1,6 +1,8 @@
 import pandas
 import numpy
 
+# c:\Git\apt-csv-work\data\10Nisteelgraph.csv
+
 def getExcess(modpath):
     #modpath = input("What was the filename of your intermediate CSV? Include .csv extension: ")
 
@@ -21,7 +23,7 @@ def getExcess(modpath):
     for i in dfmid.columns:
         colarray.append(i)
         
-    colarray.remove("Sample Count")
+    #colarray.remove("Sample Count")
     colarray.remove("Distance (nm)")
 
     colarray.remove("Unnamed: 0")
@@ -47,7 +49,7 @@ def getExcess(modpath):
 
     print(proparray)
 
-    print("Total Sample Count: " + str(dfmid["Sample Count"].sum()))
+    #print("Total Sample Count: " + str(dfmid["Sample Count"].sum()))
 
 
 
@@ -79,7 +81,7 @@ def getExcess(modpath):
 
     for i in range(0, len(dfmid["Distance (nm)"])):
 
-        n = dfmid["Sample Count"][i]
+        n = 100 #dfmid["Sample Count"][i]
         # rho = lp*molarmass/((a**3)*avo)
         rho  = lp/(a**3)
         area = n/(rho*delL)
@@ -96,3 +98,8 @@ def getExcess(modpath):
 
 # print(dfmid.columns.get_loc("Distance (nm)")) # ----> col index
 # print(dfmid.columns[1]) # index ----> col name
+
+#mo - .315
+#c - .308
+
+getExcess(input("What graphing file would you like to calculate GIEoS from?: "))
