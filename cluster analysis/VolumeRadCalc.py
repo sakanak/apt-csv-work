@@ -17,11 +17,11 @@ else:
 print(bounded)
 
 molOmega = float(input("In nm^3, what is your Average Atomic Volume for the isotope of interest?: "))
-#dMax = float(input("What is your d-max (nm)?: "))
-#order = float(input("What is your order (ions)?: "))
-#nMin = float(input("What is your N-min (ions)?: "))
-#length = float(input("What is your l (nm)?: "))
-#dErosion = float(input("What is your d-erosion paramter (nm)?: "))
+dMax = float(input("What is your d-max (nm)?: "))
+order = float(input("What is your order (ions)?: "))
+nMin = float(input("What is your N-min (ions)?: "))
+length = float(input("What is your l (nm)?: "))
+dErosion = float(input("What is your d-erosion paramter (nm)?: "))
 clusterCount = int(input("How many clusters do you have?: "))
 if(bounded == True):
     multiplier = 2
