@@ -4,6 +4,10 @@ Analyzing/modifying CSV proxigram data
 Use:
 Download applet folder
 Run ManipulationInterface.py
+    ![alt](https://i.postimg.cc/Kv0k7Tgn/manipinterface.png)
+
+    Enter filepaths in the necessary fields, then click "Load Entered Filepaths"
+    To run any other tasks after loading filepaths, click the button corresponding to that task and follow the prompts in your terminal.
 
 Package requirements:
 matplotlib
@@ -12,15 +16,21 @@ pandas
 tkinter
 struct
 
+For project description, see Mentorship Deliverables/pdf_versions/CARM Kanigicherla Vishal Final Powerpoint 2020.pptx.pdf
 
-ManualPeakDecomp.py requires:
-    Proxigram CSV file
-    Knowledge of unknown peaks (#, constituent elements w/ %s)
-    Understanding which columns user wants to retain and discard
-
-ManualPeakDecomp.py uses the pandas library to parse the proxigram CSV file, and matplotlib in order to generate the final scatterplot.
- 
-There are three files ManualPeakDecomp.py interacts with. The first is the original CSV file, the example in this repository with name steelrntest.csv. From that file, unknown peaks are separated into their constituent elements, and the file is rewritten into an intermediate, in this repository as steelmod.csv. The third file is the final, with percentages instead of atom counts, and data deemed irrelevant to analysis by user discarded. That file is used to generate the scatterplot to visualize concentration distribution, while the intermediate second file will be used after 'core' region identification for further statistics. An example of the third file exists in the repository as steelgraph.csv.
-
-
-ColumnModCheck.py prints two columns of data from two distinct CSV files that have the same header (Ex. Al %) to check that intermediate files have transferred the correct data.
+To-do list and tentative additions for applet:
+    
+    Add whole sample calculations using lattice parameter to *VolumeRadCalc.py*
+    Cluster detection and colocation algorithm
+    Basic proxigram generation
+    Cut *ProxigramPeakDecomp.py* into substituent methods
+    
+    POS file handlilng
+        Parse .pos for file length
+        Make graphing software plot >1,000,000 data points
+        Make *MassSpectrum.py* handle more data
+    
+    Tentative
+        Integrate SQL to handle larger file sizes
+        Use ML to optimize maximum separation algorithm for dmax/Nmin
+        Optimize calculation for Gibbsian interfacial excess of solute
