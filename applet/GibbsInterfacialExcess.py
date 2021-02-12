@@ -74,7 +74,12 @@ def getExcess(modpath):
     a = float(input("What is your lattice parameter?"))
 
     # molarmass = 58.6934
-    lp = 4
+
+    checkCC = input("If matrix is FCC, type 'FCC'; if matrix is BCC, type 'BCC': ")
+    if(checkCC == 'FCC'):
+        lp = 4 # 4 for FCC, 2 for BCC
+    if(checkCC == 'BCC'):
+        lp = 2
     # avo = 6.0221409e+23
 
     for i in range(0, len(dfmid["Distance (nm)"])):
