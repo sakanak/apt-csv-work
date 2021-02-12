@@ -1,6 +1,13 @@
 # apt-csv-work
 Analyzing/modifying CSV proxigram data
 
+Application package requirements:
+    matplotlib
+    numpy
+    pandas
+    tkinter
+    struct
+
 Use:
 Download applet folder
 Run ManipulationInterface.py
@@ -8,13 +15,6 @@ Run ManipulationInterface.py
 
     Enter filepaths in the necessary fields, then click "Load Entered Filepaths"
     To run any other tasks after loading filepaths, click the button corresponding to that task and follow the prompts in your terminal.
-
-Package requirements:
-matplotlib
-numpy
-pandas
-tkinter
-struct
 
 For project description, see Mentorship Deliverables/pdf_versions/CARM Kanigicherla Vishal Final Powerpoint 2020.pptx.pdf
 
