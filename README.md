@@ -8,14 +8,13 @@ Application package requirements:
     tkinter
     struct
 
-Use:
 ## Use:
-    Download applet folder
-    Run ManipulationInterface.py
-        ![alt](https://i.postimg.cc/Kv0k7Tgn/manipinterface.png)
+Download applet folder
+Run ManipulationInterface.py
+    ![alt](https://i.postimg.cc/Kv0k7Tgn/manipinterface.png)
 
-        Enter filepaths in the necessary fields, then click "Load Entered Filepaths"
-        To run any other tasks after loading filepaths, click the button corresponding to that task and follow the prompts in your terminal.
+    Enter filepaths in the necessary fields, then click "Load Entered Filepaths"
+    To run any other tasks after loading filepaths, click the button corresponding to that task and follow the prompts in your terminal.
 
 ### For project description, see Mentorship Deliverables/pdf_versions/CARM Kanigicherla Vishal Final Powerpoint 2020.pptx.pdf
 
