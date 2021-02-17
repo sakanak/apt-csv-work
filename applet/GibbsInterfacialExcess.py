@@ -45,6 +45,7 @@ def getExcess(modpath):
 
     data = [colarray, sumarray, proparray]
 
+    print("This is an array of the proportion of each element in the sample: ")
     print(proparray)
 
     print("Total Sample Count: " + str(dfmid["Sample Count"].sum()))
@@ -58,7 +59,7 @@ def getExcess(modpath):
 
     idx = 0
     head = ""
-    head = input("What header would you like a Co for?: ")
+    head = input("What element (entire header) would you like to calculate Gibbs interfacial excess of solute for?: ")
     for i in range(0, len(colarray)):
         if head == colarray[i]:
             idx = i
@@ -71,7 +72,7 @@ def getExcess(modpath):
     delL = float('%.3g' % (dfmid["Distance (nm)"][1] - dfmid["Distance (nm)"][0])) 
     area = 0
 
-    a = float(input("What is your lattice parameter?"))
+    a = float(input("What is the lattice parameter of the sample matrix (nm)?: "))
 
     # molarmass = 58.6934
 
