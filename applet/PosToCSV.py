@@ -3,8 +3,23 @@ import numpy
 import struct
 
 
-# character by character file parse, not line by line, until 16
-# have char count
+def csvlinecount(pospath):
+    charcount = 0
+    linecount = 0
+    
+    arr = []
+
+    with open(pospath, 'rb') as f:
+        for line in f:
+            charcount = charcount + len(line)
+            linecount = linecount + 1
+    
+        print(str(charcount/16) + " atoms to transfer to CSV")
+        return(charcount/16)
+
+
+
+
 
 def csvbuildcount(pospath):
     chararr = []
@@ -18,7 +33,7 @@ def csvbuildcount(pospath):
         marker = 0
 
         line = f.readline()
-        for i in range(1000000): #(int(len(line)/16)):
+        for i in range(int(csvlinecount(pospath))): #(int(len(line)/16)):
             if(marker+16  <= len(line)):
                 e = struct.unpack('>'+'ffff', line[marker:marker+16]) #4*n
                 marker = marker + 16
@@ -57,6 +72,7 @@ def csvbuildcount(pospath):
                 #line = newline
                 chararr = list(e)
                 bigarr.append(chararr)
+
 
     pd.DataFrame(bigarr).to_csv(input("What file would you like to generate for your CSV? Include .csv extension: "))
 
