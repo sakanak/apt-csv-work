@@ -2,6 +2,12 @@ import pandas
 import matplotlib.pyplot as plt
 import numpy
 
+
+
+# test new interaction w pyplot 
+# use steel2graph
+
+
 # c:\Git\apt-csv-work\data\10Nisteelgraph.csv
 # c:\Git\apt-csv-work\data\10Ni_steel.csv
 # On VK's machine

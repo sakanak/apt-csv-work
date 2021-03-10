@@ -73,8 +73,8 @@ def csvbuildcount(pospath):
                 chararr = list(e)
                 bigarr.append(chararr)
 
-
-    pd.DataFrame(bigarr).to_csv(input("What file would you like to generate for your CSV? Include .csv extension: "))
+    csvfrompospath = pospath.replace(".pos", "-posconverted.csv")
+    pd.DataFrame(bigarr).to_csv(csvfrompospath)
 
 #def csvbuild(pospath):       
    #arr = []
