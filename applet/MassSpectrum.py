@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 
-def makespec(csvfrompospath, binsize, length):
+def makespec(csvfrompospath):
     df = pd.read_csv(csvfrompospath)
     df = df["3"]
 
@@ -19,7 +19,7 @@ def makespec(csvfrompospath, binsize, length):
         count[i] = marker
         marker+=binsize
 
-    #print(count)
+    print(count)
 
     for i in df:
         for j in range(len(count)):
@@ -27,6 +27,7 @@ def makespec(csvfrompospath, binsize, length):
                 tally[j] += 1
             
 
+    print(tally)
 
     plt.scatter(x = count, y = tally)
     plt.ylabel("Bins")
@@ -40,6 +41,4 @@ def makespec(csvfrompospath, binsize, length):
     
     plt.show()
     #print(tally)
-
-
     
