@@ -19,12 +19,12 @@ Run ManipulationInterface.py
 ### For project description, see Mentorship Deliverables/pdf_versions/CARM Kanigicherla Vishal Final Powerpoint 2020.pptx.pdf
 
 ## To-do list and tentative additions for applet:
-    - Add whole sample calculations using lattice parameter to *VolumeRadCalc.py*
-    - Cluster detection and colocation algorithm
-    - Basic proxigram generation
-    - Cut *ProxigramPeakDecomp.py* into substituent methods
+    - Add whole sample calculations using lattice parameter to *VolumeRadCalc.py* (IN PROGRESS)
+    - Cluster detection and colocation algorithm (IN PROGRESS)
+    - Basic proxigram generation (IN PROGRESS)
+    - Cut *ProxigramPeakDecomp.py* into substituent methods (COMPLETED)
     
-    - POS file handlilng
+    - POS file handlilng (COMPLETED)
         - Parse .pos for file length
         - Make graphing software plot >1,000,000 data points
         - Make *MassSpectrum.py* handle more data
@@ -32,4 +32,4 @@ Run ManipulationInterface.py
     - Tentative
         - Integrate SQL to handle larger file sizes
         - Use ML to optimize maximum separation algorithm for dmax/Nmin
-        - Optimize calculation for Gibbsian interfacial excess of solute
+        - Optimize calculation for Gibbsian interfacial excess of solute (IN PROGRESS)
