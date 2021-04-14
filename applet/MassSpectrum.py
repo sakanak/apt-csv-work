@@ -30,8 +30,8 @@ def makespec(csvfrompospath):
     print(tally)
 
     plt.scatter(x = count, y = tally)
-    plt.ylabel("Bins")
-    plt.xlabel("mass to charge ratio")
+    plt.ylabel("Frequency")
+    plt.xlabel("Mass to Charge Ratio (m/z)")
     plt.title("Mass Spectrum")
 
     #for i in range(len(count)):
