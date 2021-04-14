@@ -7,6 +7,7 @@ Application package requirements:
     pandas
     tkinter
     struct
+    scikit-learn
 
 ## Use:
 Download applet folder
@@ -20,9 +21,10 @@ Run ManipulationInterface.py
 
 ## To-do list and tentative additions for applet:
     - Add whole sample calculations using lattice parameter to *VolumeRadCalc.py* (IN PROGRESS)
-    - Cluster detection and colocation algorithm (IN PROGRESS)
+    - Cluster detection and colocation algorithm (IN PROGRESS), using DBSCAN machine learning algorithms
     - Basic proxigram generation (IN PROGRESS)
     - Cut *ProxigramPeakDecomp.py* into substituent methods (COMPLETED)
+    - Transfer to application using py2app
     
     - POS file handlilng (COMPLETED)
         - Parse .pos for file length
