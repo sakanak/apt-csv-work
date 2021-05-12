@@ -29,7 +29,8 @@ rcParams['figure.figsize'] = 14, 6
 # KNN for 27 Da line (5 in range)
 
 ############## Read CSV File with Geographical Data #################
-df = pd.read_csv("R41_03247-v01-posconverted.csv")
+filename = input("What is your POS-converteed CSV filepath?")
+df = pd.read_csv(filename)
 data = df.head(10000)
 
 ############## Show info about Database #############################
@@ -69,7 +70,8 @@ model = DBSCAN(eps = 0.6, min_samples=10, metric = 'euclidean').\
 
 ################# Visualize Results ###################
 outliers_df = data[model.labels_ == -1]
-clusters_df = data[model.labels_ != -1]
+print(model.labels_)
+clusters_df = data[model.labels_ != -1] # HERE
 colors = model.labels_
 colors_clusters = colors[colors != -1]
 color_outliers = 'black'
@@ -97,18 +99,18 @@ print("Number of Clusters = {}".format(len(clusters)-1))
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
+for m, zlow, zhigh in [('.', -50, -25), ('^', -30, -5)]:
     xs = clusters_df["0"]
     ys = clusters_df["1"]
     zs = clusters_df["2"]
-    ax.scatter(xs, ys, zs, c = colors_clusters, s = 50, marker= '.') #edgecolors = "black"
+    ax.scatter(xs, ys, zs, c = colors_clusters, s = 50, marker= '.') #edgecolors = "black", 
 
 ax.set_xlabel('x (nm)')
 ax.set_ylabel('y (nm)')
 ax.set_zlabel('z (nm)')
 
-# print(clusters)
-# del clusters[0]
+# print(clusters) 
+del clusters[0]
 # print(clusters)
 
 plt.show()
