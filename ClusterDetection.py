@@ -6,7 +6,7 @@ from sklearn.cluster import DBSCAN
 from collections import Counter
 from sklearn.preprocessing import StandardScaler
 from pylab import rcParams
-rcParams['figure.figsize'] = 14, 6
+rcParams['figure.figsize'] = 14, 6 
 
 
 
